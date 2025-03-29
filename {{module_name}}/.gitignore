@@ -1,0 +1,6 @@
+docs/references/plugin-reference
+docs/references/q2doc.bib
+docs/_build/
+docs/data/
+.locks/
+.DS_Store

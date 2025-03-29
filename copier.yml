@@ -1,0 +1,25 @@
+
+book_title:
+    type: str
+    help: What is the title of your book?
+    default: "My Cool Tutorial"
+
+book_author:
+    type: str
+    help: Who is your book's author?
+    default: Caporaso Lab
+
+author_website:
+    type: str
+    help: URL to the preferred online profile for the author (e.g., https://example.com/my/profile)?
+    default: https://cap-lab.bio
+
+book_id:
+    type: str
+    help: Define your book's identifier.
+    default: "cool-tutorial"
+
+module_name:
+    type: str
+    help: Define your book's module name. It should be a Python identifier.
+    default: "cool_tutorial"

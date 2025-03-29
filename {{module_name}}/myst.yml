@@ -1,0 +1,31 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: {{ book_id }}
+  title: {{ book_title }}
+  # description:
+  # keywords: []
+  authors: [{{ book_author }}]
+  # github:
+  references:
+    q2doc-api-target: https://develop.qiime2.org/en/latest/
+    q2doc-library-target: https://library.qiime2.org
+    q2doc-amplicon-docs-ext: https://amplicon-docs.readthedocs.io/en/latest/
+
+  plugins:
+    - type: executable
+      path: _static/q2doc-plug.py
+
+  toc:
+    - file: intro.md
+    - file: tutorial.md
+    - file: glossary.md
+
+site:
+  template: https://github.com/ebolyen/myst-book-theme-poc.git
+  options:
+      folders: true
+      favicon: _static/favicon.ico
+      logo: _static/logo-light.png
+      logo_dark: _static/logo-dark.png
+      pretty_urls: false
