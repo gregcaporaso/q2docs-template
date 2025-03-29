@@ -1,0 +1,38 @@
+# {{ book_title }} source
+
+[![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-grayscale-inverted-border-orange.json)](https://github.com/copier-org/copier)
+
+To build this documentation locally for development purposes, first create your development environment.
+
+```
+cd {{ module_name }}
+conda env create -n {{ book_id }} --file environment-files/readthedocs.yml
+conda activate {{ book_id }}
+q2doc refresh-cache
+```
+
+Then, use one or more of the following make commands.
+
+Prepare deployment documentation:
+
+```
+make autodoc
+```
+
+Build the book, but don't format or run commands:
+
+```
+make fast-preview
+```
+
+Build the book, and format but don't run commands:
+
+```
+make preview
+```
+
+Build the book, formatting and running commands:
+
+```
+make html
+```

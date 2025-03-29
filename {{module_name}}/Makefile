@@ -1,21 +1,34 @@
+# helpers
+_copy-data:
+	cp environment-files/readthedocs.yml book/_static/environment.yml
+	@if [ -d "book/data/" ]; then \
+		cp -r book/data/ book/_build/html/data/; \
+		echo "Copied data directory."; \
+	else \
+		echo "book/data/ not found, skipping copy."; \
+	fi
+
+_build-html:
+	cd book && jupyter book build --html
+
+_build-fast-preview:
+	cd book && Q2DOC_FASTMODE= jupyter book build --html
+
+_build-preview:
+	cd book && Q2DOC_PREVIEW= jupyter book build --html
+
+# main targets
 autodoc:
-	cd docs/references && q2doc autodoc --no-validate .
+	cd book/references && q2doc autodoc --no-validate .
 
-html:
-	cd docs && jupyter book build --html
-	cp -r docs/data/ docs/_build/html/data/
+html: _build-html _copy-data
 
-fast-preview:
-	cd docs && Q2DOC_FASTMODE= jupyter book build --html
-	cp -r docs/data/ docs/_build/html/data/
+fast-preview: _build-fast-preview _copy-data
 
-preview:
-	cd docs && Q2DOC_PREVIEW= jupyter book build --html
-	cp -r docs/data/ docs/_build/html/data/
+preview: _build-preview _copy-data
 
 serve:
-	npx serve docs/_build/html/ -p 4000
+	npx serve book/_build/html/ -p 4000
 
 clean:
-	rm -rf docs/_build/html/
-	rm -rf docs/data
+	rm -rf book/_build/html/
