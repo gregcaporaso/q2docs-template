@@ -20,6 +20,11 @@ _build-preview:
 	cd book && Q2DOC_PREVIEW= jupyter book build --html
 
 # main targets
+{% if book_type == 'Plugin documentation' %}
+autodoc:
+	q2doc autodoc --singlepage --plugin {{ plugin_name }} --output plugin-reference book
+{% endif %}
+
 html: _copy-env-file _build-html _copy-data
 
 fast-preview: _copy-env-file _build-fast-preview _copy-data

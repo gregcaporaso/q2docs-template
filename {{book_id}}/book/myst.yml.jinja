@@ -4,7 +4,7 @@ project:
   id: {{ book_id }}
   title: {{ book_title }}
   # description:
-  # keywords: []
+  keywords: ["QIIME", "QIIME 2", "microbiome", "metagenome"]
   # uncommenting "authors" will put the author list on every page
   # authors: ["{{ book_author }}"]
   # github:
@@ -21,6 +21,16 @@ project:
   toc:
     - file: intro.md
     - file: tutorial.md
+{% if book_type == 'Plugin documentation' %}
+    - title: References
+      children:
+        - title: Plugin Reference
+          children:
+              - pattern: plugin-reference/plugins/*.md
+        - title: Artifact Classes and Formats
+          children:
+            - pattern: plugin-reference/artifacts/*.md
+{% endif %}
 
   downloads:
     - file: _static/environment.yml
