@@ -5,7 +5,7 @@
 To build this documentation locally for development purposes, first create your development environment.
 
 ```
-cd {{ module_name }}
+cd {{ book_id }}
 conda env create -n {{ book_id }} --file environment-files/readthedocs.yml
 conda activate {{ book_id }}
 q2doc refresh-cache
@@ -29,4 +29,10 @@ Build the book, formatting and running commands:
 
 ```
 make html
+```
+
+Finally, run the following to serve the built documentation locally:
+
+```
+make serve
 ```

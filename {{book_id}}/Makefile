@@ -1,6 +1,8 @@
 # helpers
-_copy-data:
+_copy-env-file:
 	cp environment-files/readthedocs.yml book/_static/environment.yml
+
+_copy-data:
 	@if [ -d "book/data/" ]; then \
 		cp -r book/data/ book/_build/html/data/; \
 		echo "Copied data directory."; \
@@ -18,14 +20,11 @@ _build-preview:
 	cd book && Q2DOC_PREVIEW= jupyter book build --html
 
 # main targets
-autodoc:
-	cd book/references && q2doc autodoc --no-validate .
+html: _copy-env-file _build-html _copy-data
 
-html: _build-html _copy-data
+fast-preview: _copy-env-file _build-fast-preview _copy-data
 
-fast-preview: _build-fast-preview _copy-data
-
-preview: _build-preview _copy-data
+preview: _copy-env-file _build-preview _copy-data
 
 serve:
 	npx serve book/_build/html/ -p 4000
