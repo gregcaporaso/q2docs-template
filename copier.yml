@@ -16,10 +16,5 @@ author_website:
 
 book_id:
     type: str
-    help: Define your book's identifier.
+    help: Define your book's identifier. Avoid spaces or other characters that are problematic for directory names.
     default: "cool-tutorial"
-
-module_name:
-    type: str
-    help: Define your book's module name. It should be a Python identifier.
-    default: "cool_tutorial"
