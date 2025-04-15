@@ -18,9 +18,6 @@ _build-preview:
 	cd book && Q2DOC_PREVIEW= jupyter book build --html
 
 # main targets
-autodoc:
-	cd book/references && q2doc autodoc --no-validate .
-
 html: _build-html _copy-data
 
 fast-preview: _build-fast-preview _copy-data
